@@ -32,7 +32,45 @@ The file follows the following format:
 See the file script for an example of the file format
 """
 def parse_file( fname, points, transform, screen, color ):
-    f = open( filename, "r" )
+    f = open( fname, "r" )
     line = f.readline()
-    while 
-    pass
+    while( line != "" ):
+        if( line == "line" ):
+            line = f.readline()
+            line.split(" ")
+            add_edge( points, line[0], line[1], line[2], line[3], line[4], line[5] )
+        elif( line == "ident" ):
+            ident(transform)
+        elif( line == "scale" ):
+            line = f.readline()
+            line.split(" ")
+            matrix_mult( transform, make_sscale( line[0], line[1], line[2] ) )
+        elif( line == "translate" ):
+            line = f.readline()
+            line.split(" ")
+            matrix_mult( transform, make_translate( line[0], line[1], line[2] ) )
+        elif( line == "rotate" ):
+            line = f.readline()
+            line.split(" ")
+            if( line[0] == 'x' ):
+                matrix_mult( transform, make_rotX( line[1] ) )
+            elif( line[0] == 'y' ):
+                matrix_mult( transform, make_rotY( line[1] ) )
+            elif( line[0] == 'z' ):
+                matrix_mult( transform, make_rotZ( line[1] ) )
+        elif( line == "apply" ):
+            matrix_mult( transform, points )
+        elif( line == "display" ):
+            clear_screen( screen )
+            draw_lines( points, screen, color )
+            display( screen )
+        elif( line == "save" ):
+            line = f.readline()
+            line.split(" ")
+            clear_screen( screen )
+            draw_lines( points, screen, color )
+            save_extension( screen, line[0] )
+        elif( line == "quit" ):
+            sys.exit
+        line = f.readline()
+        pass
