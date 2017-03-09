@@ -41,32 +41,32 @@ def parse_file( fname, points, transform, screen, color ):
             fun = f.readline()
             fun = fun.strip( "\n" )
             fun = fun.split(" ")
-            add_edge( points, Float.parseFloat(fun[0]), Float.parseFloat(fun[1]), Float.parseFloat(fun[2]), Float.parseFloat(fun[3]), Float.parseFloat(fun[4]), Float.parseFloat(fun[5]) )
+            add_edge( points, float(fun[0]), float(fun[1]), float(fun[2]), float(fun[3]), float(fun[4]), float(fun[5]) )
         elif( fun == "ident" ):
             ident(transform)
         elif( fun == "scale" ):
             fun = f.readline()
             fun = fun.strip( "\n" )
             fun = fun.split(" ")
-            matrix_mult( make_scale( Float.parseFloat(fun[0]), Float.parseFloat(fun[1]), Float.parseFloat(fun[2]) ), transform )
+            matrix_mult( make_scale( float(fun[0]), float(fun[1]), float(fun[2]) ), transform )
         elif( fun == "move" ):
             fun = f.readline()
             fun = fun.strip( "\n" )
             fun = fun.split(" ")
-            matrix_mult( make_translate( Float.parseFloat(fun[0]), Float.parseFloat(fun[1]), Float.parseFloat(fun[2]) ), transform )
+            matrix_mult( make_translate( float(fun[0]), float(fun[1]), float(fun[2]) ), transform )
         elif( fun == "rotate" ):
             fun = f.readline()
             fun = fun.strip( "\n" )
             fun = fun.split(" ")
             if( fun[0] == 'x' ):
-                print_matrix ( make_rotX( Float.parseFloat(fun[1]) ) )
-                matrix_mult( make_rotX( Float.parseFloat(fun[1]) ), transform )
+                print_matrix ( make_rotX( float(fun[1]) ) )
+                matrix_mult( make_rotX( float(fun[1]) ), transform )
             elif( fun[0] == 'y' ):
-                print_matrix ( make_rotY( Float.parseFloat(fun[1]) ) )
-                matrix_mult( make_rotY( Float.parseFloat(fun[1]) ), transform )
+                print_matrix ( make_rotY( float(fun[1]) ) )
+                matrix_mult( make_rotY( float(fun[1]) ), transform )
             elif( fun[0] == 'z' ):
-                print_matrix ( make_rotZ( Float.parseFloat(fun[1]) ) )
-                matrix_mult( make_rotZ( Float.parseFloat(fun[1]) ), transform )
+                print_matrix ( make_rotZ( float(fun[1]) ) )
+                matrix_mult( make_rotZ( float(fun[1]) ), transform )
         elif( fun == "apply" ):
             matrix_mult( transform, points )
         elif( fun == "display" ):
