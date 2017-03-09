@@ -3,9 +3,9 @@ import math
 def make_translate( x, y, z ):
     matrix = new_matrix()
     ident(matrix)
-    matrix[0][3] = x
-    matrix[1][3] = y
-    matrix[2][3] = z
+    matrix[3][0] = x
+    matrix[3][1] = y
+    matrix[3][2] = z
     return matrix
     pass
 
@@ -19,35 +19,35 @@ def make_scale( x, y, z ):
     pass
 
 def make_rotX( theta ):
-    rad = Math.radians( theta )
+    rad = math.radians( theta )
     matrix = new_matrix()
     ident(matrix)
-    matrix[1][1] = Math.cos( rad )
-    matrix[1][2] = -1 * Math.sin( rad )
-    matrix[2][1] = Math.sin( rad )
-    matrix[2][2] = Math.cos( rad )
+    matrix[1][1] = math.cos( rad )
+    matrix[2][1] = -1 * math.sin( rad )
+    matrix[1][2] = math.sin( rad )
+    matrix[2][2] = math.cos( rad )
     return matrix
     pass
 
 def make_rotY( theta ):    
-    rad = Math.radians( theta )
+    rad = math.radians( theta )
     matrix = new_matrix()
     ident(matrix)
-    matrix[1][0] = Math.cos( rad )
-    matrix[0][2] = Math.sin( rad )
-    matrix[2][0] = -1 * Math.sin( rad )
-    matrix[1][2] = Math.cos( rad )
+    matrix[0][0] = math.cos( rad )
+    matrix[2][0] = math.sin( rad )
+    matrix[0][2] = -1 * math.sin( rad )
+    matrix[2][2] = math.cos( rad )
     return matrix
     pass
 
 def make_rotZ( theta ):
-    rad = Math.radians( theta )
+    rad = math.radians( theta )
     matrix = new_matrix()
     ident(matrix)
-    matrix[0][0] = Math.cos( rad )
-    matrix[0][1] = -1 * Math.sin( rad )
-    matrix[1][0] = Math.sin( rad )
-    matrix[1][1] = Math.cos( rad )
+    matrix[0][0] = math.cos( rad )
+    matrix[1][0] = -1 * math.sin( rad )
+    matrix[0][1] = math.sin( rad )
+    matrix[1][1] = math.cos( rad )
     return matrix
     pass
 
